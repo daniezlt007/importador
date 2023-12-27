@@ -92,7 +92,7 @@ public class ItemDataServiceImpl implements ItemDataService {
         itemData.setUbli(parts[0]);
         itemData.setScacCode(parts[1]);
         itemData.setContainerNr(parts[2]);
-        itemData.setItemNr(Integer.parseInt(parts[3]));
+        itemData.setItemNr(parts[3] != null ? Integer.parseInt(parts[3]) : 0);
         itemData.setShipmentType1(parts[4]);
         return itemData;
     }

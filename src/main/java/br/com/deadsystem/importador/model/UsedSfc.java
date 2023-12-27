@@ -102,7 +102,7 @@ public class UsedSfc {
 
     private Integer matrix;
 
-    @Column(name = "sfc_int_no")
+    @Column(name = "currency_no")
     private String currencyNo;
 
     private String remark;

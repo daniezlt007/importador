@@ -86,7 +86,7 @@ public class ItemTextDataServiceImpl implements ItemTextDataService {
         itemData.setScacCode(parts[1]);
         itemData.setItemNr(Integer.parseInt(parts[2]));
         itemData.setDesctiptionOfGoods(parts[3]);
-        itemData.setNcmNumbers(parts[4]);
+        itemData.setNcmNumbers(!parts[4].isEmpty() || parts[4] != null ? parts[4] : "");
         return itemData;
     }
 
