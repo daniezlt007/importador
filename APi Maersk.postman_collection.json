@@ -1,0 +1,165 @@
+{
+	"info": {
+		"_postman_id": "9d5f4c9b-51c7-44ea-a568-85b94ef8c6f3",
+		"name": "APi Maersk",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3683469"
+	},
+	"item": [
+		{
+			"name": "Header",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/danie/Downloads/teste/BLH_50_Examples.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/import/header/data",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"import",
+						"header",
+						"data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ItemData",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/danie/Downloads/ITM_50_Examples.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/import/itemdata/data",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"import",
+						"itemdata",
+						"data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ItemTextData",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/danie/Downloads/ITM_TXT_50_Examples.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/import/itemtextdata/data",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"import",
+						"itemtextdata",
+						"data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UsedScfData",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/danie/Downloads/SFC_for_50_Examples.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/import/usedsfcdata/data",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"import",
+						"usedsfcdata",
+						"data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChargeData",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/danie/Downloads/ITM_TXT_50_Examples.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/import/usedsfcdata/data",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"import",
+						"usedsfcdata",
+						"data"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
