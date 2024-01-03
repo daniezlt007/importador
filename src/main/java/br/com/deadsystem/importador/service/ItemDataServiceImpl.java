@@ -94,6 +94,17 @@ public class ItemDataServiceImpl implements ItemDataService {
         itemData.setContainerNr(parts[2]);
         itemData.setItemNr(parts[3] != null ? Integer.parseInt(parts[3]) : 0);
         itemData.setShipmentType1(parts[4]);
+        itemData.setContainerType(parts[5]);
+        itemData.setGrossWeight(parts[6] != null ? Double.parseDouble(parts[6].replace(",",".")) : 0);
+        itemData.setGrossWeightUnit(parts[7]);
+        itemData.setItemBookNo(parts[8]);
+        itemData.setVolume(parts[9] != null ? Double.parseDouble(parts[9].replace(",",".")) : 0);
+        itemData.setVolumeUnit(parts[10]);
+        itemData.setHsCode(parts[11]);
+        itemData.setPackageCount(!parts[12].isEmpty() ? Integer.parseInt(parts[12]) : 0);
+        itemData.setPackageType(parts[13]);
+        itemData.setUbli13(parts[14]);
+        itemData.setVersion(parts[15]);
         return itemData;
     }
 }

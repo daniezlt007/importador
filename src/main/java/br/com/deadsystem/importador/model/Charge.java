@@ -64,6 +64,12 @@ public class Charge {
     @Column(name = "ymc_main")
     private String ymcMain;
 
+    @Column(name = "calculation_rate")
+    private Double calculationRate;
+
+    @Column(name = "calculation_factor")
+    private Double calculationFactor;
+
     @Column(name = "calculation_base_rule")
     private String calculationBaseRule;
 

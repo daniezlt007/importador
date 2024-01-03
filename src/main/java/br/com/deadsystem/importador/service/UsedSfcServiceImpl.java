@@ -112,7 +112,57 @@ public class UsedSfcServiceImpl implements UsedSfcService {
         }
     }
 
-    public static UsedSfc fromStringUsedSfc(String line){
+    public static UsedSfc fromStringUsedSfc(String line) {
+        UsedSfc itemData = new UsedSfc();
+        String[] parts = line.split("\\|");
+
+        itemData.setSfcIntNo(getValue(parts, 0));
+        itemData.setTerritoryNo(getValue(parts, 1));
+        itemData.setAccountCurrent(getValue(parts, 2));
+        itemData.setSfcName(getValue(parts, 3));
+        itemData.setSfcName2(getValue(parts, 4));
+        itemData.setUpdateUserIntNo(getValue(parts, 5));
+        itemData.setUpdateTimestamp(Util.convertDateTime(getValue(parts, 6)));
+        itemData.setAccountType(getValue(parts, 7));
+        itemData.setImExport(getValue(parts, 8));
+        itemData.setCifFob(getValue(parts, 9));
+        itemData.setReorgYn(getValue(parts, 10));
+        itemData.setCarrierMerchant(getValue(parts, 11));
+        itemData.setCaresYn(getValue(parts, 12));
+        itemData.setTopShipperYn(getValue(parts, 13));
+        itemData.setBranchId(getValue(parts, 14));
+        itemData.setStreet(getValue(parts, 15));
+        itemData.setCityName(getValue(parts, 16));
+        itemData.setCountryNo(getValue(parts, 17));
+        itemData.setStateNo(getValue(parts, 18));
+        itemData.setZipNo(getValue(parts, 19));
+        itemData.setPhoneNo(getValue(parts, 20));
+        itemData.setFaxNo(getValue(parts, 21));
+        itemData.setEmailAddress(getValue(parts, 22));
+        itemData.setHomepageAddress(getValue(parts, 23));
+        itemData.setTaxNo(getValue(parts, 24));
+        itemData.setAreaRegionLbu(getValue(parts, 25));
+        itemData.setInttraCode(getValue(parts, 26));
+        itemData.setMatrix(getValue(parts, 27));
+        itemData.setCurrencyNo(getValue(parts, 28));
+        itemData.setRemark(getValue(parts, 29));
+        itemData.setAccessorOffice(getValue(parts, 30));
+        itemData.setSiteInfo(getValue(parts, 31));
+        itemData.setSfcTypes(getValue(parts, 32));
+        itemData.setCityCode(getValue(parts, 33));
+        itemData.setSupplement(getValue(parts, 34));
+        itemData.setNeighborhood(getValue(parts, 35));
+        itemData.setStreetNumber(getValue(parts, 36));
+        itemData.setPoBox(getValue(parts, 37));
+
+        return itemData;
+    }
+
+    private static String getValue(String[] array, int index) {
+        return (index >= 0 && index < array.length && !array[index].isEmpty()) ? array[index] : null;
+    }
+
+    /*public static UsedSfc fromStringUsedSfc(String line){
         UsedSfc itemData = new UsedSfc();
         String[] parts = line.split("\\|");
         itemData.setSfcIntNo(parts[0]);
@@ -120,7 +170,7 @@ public class UsedSfcServiceImpl implements UsedSfcService {
         itemData.setAccountCurrent(parts[2]);
         itemData.setSfcName(parts[3]);
         itemData.setSfcName2(parts[4]);
-        itemData.setUpdateUserIntNo(Integer.parseInt(parts[5]));
+        itemData.setUpdateUserIntNo(parts[5]);
         itemData.setUpdateTimestamp(Util.convertDateTime(parts[6]));
         itemData.setAccountType(parts[7]);
         itemData.setImExport(parts[8]);
@@ -129,7 +179,7 @@ public class UsedSfcServiceImpl implements UsedSfcService {
         itemData.setCarrierMerchant(parts[11]);
         itemData.setCaresYn(parts[12]);
         itemData.setTopShipperYn(parts[13]);
-        itemData.setBranchId(Integer.parseInt(parts[14]));
+        itemData.setBranchId(parts[14]);
         itemData.setStreet(parts[15]);
         itemData.setCityName(parts[16]);
         itemData.setCountryNo(parts[17]);
@@ -142,7 +192,7 @@ public class UsedSfcServiceImpl implements UsedSfcService {
         itemData.setTaxNo(parts[24]);
         itemData.setAreaRegionLbu(parts[25]);
         itemData.setInttraCode(parts[26]);
-        itemData.setMatrix(Integer.parseInt(parts[27]));
+        itemData.setMatrix(parts[27]);
         itemData.setCurrencyNo(parts[28]);
         itemData.setRemark(parts[29]);
         itemData.setAccessorOffice(parts[30]);
@@ -154,6 +204,6 @@ public class UsedSfcServiceImpl implements UsedSfcService {
         itemData.setStreetNumber(parts[36]);
         itemData.setPoBox(parts[37]);
         return itemData;
-    }
+    }*/
 
 }

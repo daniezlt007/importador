@@ -36,7 +36,7 @@ public class UsedSfc {
     private String sfcName2;
 
     @Column(name = "update_user_int_no")
-    private Integer updateUserIntNo;
+    private String updateUserIntNo;
 
     @Column(name = "update_timestamp")
     private LocalDateTime updateTimestamp;
@@ -63,7 +63,7 @@ public class UsedSfc {
     private String topShipperYn;
 
     @Column(name = "branch_id")
-    private Integer branchId;
+    private String branchId;
 
     private String street;
 
@@ -100,7 +100,7 @@ public class UsedSfc {
     @Column(name = "inttra_code")
     private String inttraCode;
 
-    private Integer matrix;
+    private String matrix;
 
     @Column(name = "currency_no")
     private String currencyNo;
