@@ -1,7 +1,8 @@
 package br.com.deadsystem.importador.controller;
 
-import br.com.deadsystem.importador.model.HeaderData;
-import br.com.deadsystem.importador.service.HeaderDataServiceImpl;
+import br.com.deadsystem.importador.model.Charge;
+import br.com.deadsystem.importador.model.SfcData;
+import br.com.deadsystem.importador.service.SfcServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,15 +19,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/import/header")
-public class ImportHeaderController {
+@RequestMapping("/api/import/sfcdata")
+public class SfcController {
 
     @Autowired
-    private HeaderDataServiceImpl service;
+    private SfcServiceImpl service;
 
     @PostMapping("/data")
-    public ResponseEntity<?> importHeaderData(@RequestParam("file") MultipartFile file) {
-        List<HeaderData> headerDataList = new ArrayList<>();
+    public ResponseEntity<?> importChargeData(@RequestParam("file") MultipartFile file) {
+        List<SfcData> headerDataList = new ArrayList<>();
 
         if (file.isEmpty()) {
             return new ResponseEntity<>("Por favor, envie um arquivo.", HttpStatus.BAD_REQUEST);
@@ -40,7 +41,7 @@ public class ImportHeaderController {
                     isFirstLine = false;
                     continue; // Pula a primeira linha (cabeçalho)
                 }
-                HeaderData headerData = this.service.fromStringHeaderData(line);
+                SfcData headerData = this.service.fromStringChargeData(line);
                 headerDataList.add(headerData);
             }
 
@@ -48,7 +49,8 @@ public class ImportHeaderController {
             e.printStackTrace();
             return new ResponseEntity<>("Falha ao importar os dados de remessa.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        List<HeaderData> dataList = this.service.saveAll(headerDataList);
+        List<SfcData> dataList = this.service.saveAll(headerDataList);
         return ResponseEntity.ok(dataList);
     }
+
 }

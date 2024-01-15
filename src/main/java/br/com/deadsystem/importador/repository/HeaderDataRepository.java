@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HeaderDataRepository extends JpaRepository<HeaderData, Long> {
+
+    public HeaderData findByUbli(String ubli);
+
 }

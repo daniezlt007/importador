@@ -2,18 +2,14 @@ package br.com.deadsystem.importador.service;
 
 import br.com.deadsystem.importador.model.HeaderData;
 import br.com.deadsystem.importador.repository.HeaderDataRepository;
-import br.com.deadsystem.importador.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class HeaderDataDataServiceImpl implements HeaderDataService {
+public class HeaderDataServiceImpl implements HeaderDataService {
 
     @Autowired
     private HeaderDataRepository repository;
@@ -106,15 +102,24 @@ public class HeaderDataDataServiceImpl implements HeaderDataService {
         }
     }
 
+    public HeaderData findByUbli(String ubli){
+        if(!ubli.isEmpty()){
+            HeaderData headerData = this.repository.findByUbli(ubli);
+            return headerData;
+        } else {
+            throw new RuntimeException("Object is empty in method findByUbli");
+        }
+    }
+
     public static HeaderData fromStringHeaderData(String line) {
         HeaderData headerData = new HeaderData();
         String[] parts = line.split("\\|");
 
         headerData.setUbli(parts[0]);
         headerData.setScacCode(parts[1]);
-        headerData.setCreationDate(Util.convertDate(parts[2]));
-        headerData.setSailingDate(Util.convertDate(parts[3]));
-        headerData.setIssueDate(Util.convertDate(parts[4]));
+        headerData.setCreationDate(parts[2]);
+        headerData.setSailingDate(parts[3]);
+        headerData.setIssueDate(parts[4]);
         headerData.setIssuingOffice(parts[5]);
         headerData.setOrigin(parts[6]);
         headerData.setPortOfLoading(parts[7]);
@@ -123,16 +128,16 @@ public class HeaderDataDataServiceImpl implements HeaderDataService {
         headerData.setConsignee(parts[10]);
         headerData.setNotify1(parts[11]);
         headerData.setMultiModal(parts[12]);
-        headerData.setBookingDate(Util.convertDate(parts[13]));
+        headerData.setBookingDate(parts[13]);
         headerData.setShortBlNr(parts[14]);
         headerData.setVessel(parts[15]);
         headerData.setVoyage(parts[16]);
         headerData.setDirection(parts[17]);
         headerData.setVersion(parts[18]);
         headerData.setCorrectionCode(parts[19]);
-        headerData.setCreationTimeStamp(Util.convertDateTime(parts[20]));
-        headerData.setLastUnloadDate(!parts[21].isEmpty() ? Util.convertDate(parts[21]) : null);
-        headerData.setFinalManifestDate(!parts[21].isEmpty() ? Util.convertDate(parts[22]) : null);
+        headerData.setCreationTimeStamp(parts[20]);
+        headerData.setLastUnloadDate(!parts[21].isEmpty() ? parts[21] : null);
+        headerData.setFinalManifestDate(!parts[21].isEmpty() ? parts[22] : null);
         headerData.setIssuingOfficePlace(parts[23]);
         headerData.setIssuingOfficeHsdg(parts[24]);
         headerData.setReleasedAt(parts[25]);

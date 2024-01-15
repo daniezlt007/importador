@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 
 @Getter
@@ -26,13 +24,13 @@ public class HeaderData implements Serializable {
     private String scacCode;
 
     @Column(name = "creation_date")
-    private LocalDate creationDate;
+    private String creationDate;
 
     @Column(name = "sailing_date")
-    private LocalDate sailingDate;
+    private String sailingDate;
 
     @Column(name = "issue_date")
-    private LocalDate issueDate;
+    private String issueDate;
 
     @Column(name = "issuing_office")
     private String issuingOffice;
@@ -56,7 +54,7 @@ public class HeaderData implements Serializable {
     private String multiModal;
 
     @Column(name = "booking_date")
-    private LocalDate bookingDate;
+    private String bookingDate;
 
     @Column(name = "short_bl_nr")
     private String shortBlNr;
@@ -73,13 +71,13 @@ public class HeaderData implements Serializable {
     private String correctionCode;
 
     @Column(name = "creation_timestamp")
-    private LocalDateTime creationTimeStamp;
+    private String creationTimeStamp;
 
     @Column(name = "last_unload_date")
-    private LocalDate lastUnloadDate;
+    private String lastUnloadDate;
 
     @Column(name = "final_manifest_date")
-    private LocalDate finalManifestDate;
+    private String finalManifestDate;
 
     @Column(name = "issuing_office_place")
     private String issuingOfficePlace;
