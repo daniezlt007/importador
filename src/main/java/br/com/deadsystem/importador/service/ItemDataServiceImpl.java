@@ -107,4 +107,9 @@ public class ItemDataServiceImpl implements ItemDataService {
         itemData.setVersion(parts[15]);
         return itemData;
     }
+
+    public List<ItemData> findAllByUbli(String ubli){
+        return this.itemDataRepository.findAllByUbli(ubli);
+    }
+
 }

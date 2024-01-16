@@ -24,7 +24,7 @@ public class ItemTextData {
     private String scacCode;
 
     @Column(name = "item_nr")
-    private int itemNr;
+    private String itemNr;
 
     @Column(name = "description_goods")
     private String desctiptionOfGoods;

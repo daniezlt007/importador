@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bill_rel" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1f9d7eee-98e2-4119-876a-b328c922dd71">
-	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Banco Mysql"/>
-	<queryString language="SQL">
-		<![CDATA[select * from teste_relatorio.relatorio]]>
-	</queryString>
-	<field name="id" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="id"/>
-		<property name="com.jaspersoft.studio.field.label" value="id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
-	</field>
-	<field name="shipper" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="shipper"/>
-		<property name="com.jaspersoft.studio.field.label" value="shipper"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
-	</field>
 	<field name="consignee" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="consignee"/>
 		<property name="com.jaspersoft.studio.field.label" value="consignee"/>
@@ -26,52 +11,17 @@
 		<property name="com.jaspersoft.studio.field.label" value="notify"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
 	</field>
-	<field name="bi_no_also" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="bi_no_also"/>
-		<property name="com.jaspersoft.studio.field.label" value="bi_no_also"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
-	</field>
-	<field name="booking_number" class="java.lang.String">
+	<field name="bookingNum" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="booking_number"/>
 		<property name="com.jaspersoft.studio.field.label" value="booking_number"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
 	</field>
-	<field name="exportes_references" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="exportes_references"/>
-		<property name="com.jaspersoft.studio.field.label" value="exportes_references"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
-	</field>
-	<field name="forwarding_agent_references" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="forwarding_agent_references"/>
-		<property name="com.jaspersoft.studio.field.label" value="forwarding_agent_references"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
-	</field>
-	<field name="point_country_origin" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="point_country_origin"/>
-		<property name="com.jaspersoft.studio.field.label" value="point_country_origin"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
-	</field>
-	<field name="domestic_routing" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="domestic_routing"/>
-		<property name="com.jaspersoft.studio.field.label" value="domestic_routing"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
-	</field>
-	<field name="place_receipt" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="place_receipt"/>
-		<property name="com.jaspersoft.studio.field.label" value="place_receipt"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
-	</field>
-	<field name="pre_carriage" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="pre_carriage"/>
-		<property name="com.jaspersoft.studio.field.label" value="pre_carriage"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
-	</field>
-	<field name="port_of_loading" class="java.lang.String">
+	<field name="portOfLoading" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="port_of_loading"/>
 		<property name="com.jaspersoft.studio.field.label" value="port_of_loading"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
 	</field>
-	<field name="ocean_vessel" class="java.lang.String">
+	<field name="oceanVessel" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="ocean_vessel"/>
 		<property name="com.jaspersoft.studio.field.label" value="ocean_vessel"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
@@ -81,43 +31,20 @@
 		<property name="com.jaspersoft.studio.field.label" value="voyage"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
 	</field>
-	<field name="port_discharge" class="java.lang.String">
+	<field name="portOfDischarge" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="port_discharge"/>
 		<property name="com.jaspersoft.studio.field.label" value="port_discharge"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
 	</field>
-	<field name="place_of_delivery" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="place_of_delivery"/>
-		<property name="com.jaspersoft.studio.field.label" value="place_of_delivery"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
-	</field>
-	<field name="originals_released" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="originals_released"/>
-		<property name="com.jaspersoft.studio.field.label" value="originals_released"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
-	</field>
-	<field name="freight_payable" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="freight_payable"/>
-		<property name="com.jaspersoft.studio.field.label" value="freight_payable"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
-	</field>
-	<field name="mode_load_data" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="mode_load_data"/>
-		<property name="com.jaspersoft.studio.field.label" value="mode_load_data"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
-	</field>
-	<field name="mode_disch_area" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="mode_disch_area"/>
-		<property name="com.jaspersoft.studio.field.label" value="mode_disch_area"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
-	</field>
-	<field name="bl_numero" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="bl_numero"/>
-		<property name="com.jaspersoft.studio.field.label" value="bl_numero"/>
+	<field name="blNum" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="blNum"/>
+		<property name="com.jaspersoft.studio.field.label" value="blNum"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="relatorio"/>
 	</field>
 	<field name="scacCode" class="java.lang.String"/>
 	<field name="issueDate" class="java.lang.String"/>
+	<field name="shipper" class="java.lang.String"/>
+	<field name="freightPayable" class="java.lang.String"/>
 	<background>
 		<band height="801" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -161,7 +88,7 @@
 					<font fontName="SansSerif" size="8"/>
 					<paragraph lineSpacing="Single" leftIndent="3" rightIndent="3"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<span style='color:#FF3518'>Shipper</span><br>" + $F{shipper} + $F{scacCode}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<span style='color:#FF3518'>Shipper</span><br>" + $F{shipper}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight">
 				<reportElement positionType="Float" x="-8" y="40" width="285" height="18" uuid="30c11b2e-0929-4be3-84d5-777a66fef96d">
@@ -214,7 +141,7 @@
 					<font fontName="SansSerif" size="8"/>
 					<paragraph lineSpacing="Single" leftIndent="3" rightIndent="3"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<span style='color:#FF3518'>B/L No.</span><br>" + $F{bi_no_also}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<span style='color:#FF3518'>B/L No.</span><br>" + $F{blNum}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight">
 				<reportElement positionType="Float" x="421" y="20" width="141" height="18" uuid="7c8aebb8-3265-4cec-b2db-f91d24ecca39">
@@ -231,7 +158,7 @@
 					<font fontName="SansSerif" size="8"/>
 					<paragraph lineSpacing="Single" leftIndent="3" rightIndent="3"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<span style='color:#FF3518'>Booking No.</span><br>" + $F{booking_number}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<span style='color:#FF3518'>Booking No.</span><br>" + $F{bookingNum}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight">
 				<reportElement positionType="Float" x="277" y="40" width="285" height="18" uuid="9dfc3efd-733f-419d-a1d4-818410fd7d9d">
@@ -248,7 +175,7 @@
 					<font fontName="SansSerif" size="8"/>
 					<paragraph lineSpacing="Single" leftIndent="3" rightIndent="3"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<span style='color:#FF3518'>Export References</span><br>" + $F{exportes_references}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<span style='color:#FF3518'>Export References</span><br>"]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight" pattern="Shipper">
 				<reportElement key="" positionType="Float" x="277" y="80" width="144" height="18" uuid="b50e7603-3c51-4dac-9759-d991e602a050">
@@ -265,7 +192,7 @@
 					<font fontName="SansSerif" size="8"/>
 					<paragraph lineSpacing="Single" leftIndent="3" rightIndent="3"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<span style='color:#FF3518'>Port of Loading.</span><br>" + $F{port_of_loading}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<span style='color:#FF3518'>Port of Loading.</span><br>" + $F{portOfLoading}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight">
 				<reportElement positionType="Float" x="421" y="80" width="92" height="18" uuid="9b60d67b-9485-481a-b377-added8f66352">
@@ -282,7 +209,7 @@
 					<font fontName="SansSerif" size="8"/>
 					<paragraph lineSpacing="Single" leftIndent="3" rightIndent="3"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<span style='color:#FF3518'>Ocean Vessel</span><br>" + $F{ocean_vessel}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<span style='color:#FF3518'>Ocean Vessel</span><br>" + $F{oceanVessel}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight">
 				<reportElement positionType="Float" x="514" y="80" width="48" height="18" uuid="45ba455a-f770-4a74-afbe-ec2cda5defd9">
@@ -316,7 +243,7 @@
 					<font fontName="SansSerif" size="8"/>
 					<paragraph lineSpacing="Single" leftIndent="3" rightIndent="3"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<span style='color:#FF3518'>Freight Payable</span><br>" + $F{freight_payable}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<span style='color:#FF3518'>Freight Payable</span><br>" + $F{freightPayable}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight" pattern="Shipper">
 				<reportElement key="" positionType="Float" x="277" y="100" width="285" height="18" uuid="3998d78d-3852-4794-99de-90c380bfe9d8">
@@ -333,7 +260,7 @@
 					<font fontName="SansSerif" size="8"/>
 					<paragraph lineSpacing="Single" leftIndent="3" rightIndent="3"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<span style='color:#FF3518'>Port Discharge</span><br>" + $F{port_discharge}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<span style='color:#FF3518'>Port Discharge</span><br>" + $F{portOfDischarge}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
