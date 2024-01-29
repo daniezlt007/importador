@@ -1,7 +1,6 @@
 package br.com.deadsystem.importador.service;
 
 import br.com.deadsystem.importador.model.Charge;
-import br.com.deadsystem.importador.model.ItemData;
 
 import java.util.List;
 

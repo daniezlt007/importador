@@ -1,6 +1,6 @@
 package br.com.deadsystem.importador.service;
 
-import br.com.deadsystem.importador.model.HeaderData;
+import br.com.deadsystem.importador.model.HeaderDataCorreto;
 import br.com.deadsystem.importador.repository.HeaderDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +15,9 @@ public class HeaderDataServiceImpl implements HeaderDataService {
     private HeaderDataRepository repository;
 
     @Override
-    public HeaderData save(HeaderData headerData) {
-        if(headerData != null){
-            HeaderData save = this.repository.save(headerData);
+    public HeaderDataCorreto save(HeaderDataCorreto headerDataCorreto) {
+        if(headerDataCorreto != null){
+            HeaderDataCorreto save = this.repository.save(headerDataCorreto);
             return save;
         }  else {
             throw new RuntimeException("Object not found.");
@@ -25,51 +25,51 @@ public class HeaderDataServiceImpl implements HeaderDataService {
     }
 
     @Override
-    public HeaderData update(HeaderData headerDataUpdate) {
-        Optional<HeaderData> headerDataOptional = this.repository.findById(headerDataUpdate.getId());
+    public HeaderDataCorreto update(HeaderDataCorreto headerDataCorretoUpdate) {
+        Optional<HeaderDataCorreto> headerDataOptional = this.repository.findById(headerDataCorretoUpdate.getId());
         if(headerDataOptional.isPresent()){
-            HeaderData headerData = headerDataOptional.get();
-            headerData.setId(headerData.getId());
-            headerData.setUbli(headerDataUpdate.getUbli());
-            headerData.setScacCode(headerDataUpdate.getScacCode());
-            headerData.setCreationDate(headerDataUpdate.getCreationDate());
-            headerData.setSailingDate(headerDataUpdate.getSailingDate());
-            headerData.setIssueDate(headerDataUpdate.getIssueDate());
-            headerData.setIssuingOffice(headerDataUpdate.getIssuingOffice());
-            headerData.setOrigin(headerDataUpdate.getOrigin());
-            headerData.setPortOfLoading(headerDataUpdate.getPortOfLoading());
-            headerData.setPortOfDischarge(headerDataUpdate.getPortOfDischarge());
-            headerData.setShipper(headerDataUpdate.getShipper());
-            headerData.setConsignee(headerDataUpdate.getConsignee());
-            headerData.setNotify1(headerDataUpdate.getNotify1());
-            headerData.setMultiModal(headerDataUpdate.getMultiModal());
-            headerData.setBookingDate(headerDataUpdate.getBookingDate());
-            headerData.setShortBlNr(headerDataUpdate.getShortBlNr());
-            headerData.setVessel(headerDataUpdate.getVessel());
-            headerData.setVoyage(headerDataUpdate.getVoyage());
-            headerData.setDirection(headerDataUpdate.getDirection());
-            headerData.setVersion(headerDataUpdate.getVersion());
-            headerData.setCorrectionCode(headerData.getCorrectionCode());
-            headerData.setCreationTimeStamp(headerDataUpdate.getCreationTimeStamp());
-            headerData.setLastUnloadDate(headerDataUpdate.getLastUnloadDate());
-            headerData.setFinalManifestDate(headerDataUpdate.getFinalManifestDate());
-            headerData.setIssuingOfficePlace(headerDataUpdate.getIssuingOfficePlace());
-            headerData.setIssuingOfficeHsdg(headerData.getIssuingOfficeHsdg());
-            headerData.setReleasedAt(headerDataUpdate.getReleasedAt());
-            headerData.setReleasedAtPlace(headerDataUpdate.getReleasedAtPlace());
-            headerData.setReleasedHsdg(headerDataUpdate.getReleasedHsdg());
-            headerData.setService(headerDataUpdate.getService());
-            headerData.setBookingNumber(headerDataUpdate.getBookingNumber());
-            headerData.setUbli13(headerDataUpdate.getUbli13());
-            return this.repository.save(headerData);
+            HeaderDataCorreto headerDataCorreto = headerDataOptional.get();
+            headerDataCorreto.setId(headerDataCorreto.getId());
+            headerDataCorreto.setUbli(headerDataCorretoUpdate.getUbli());
+            headerDataCorreto.setScacCode(headerDataCorretoUpdate.getScacCode());
+            headerDataCorreto.setCreationDate(headerDataCorretoUpdate.getCreationDate());
+            headerDataCorreto.setSailingDate(headerDataCorretoUpdate.getSailingDate());
+            headerDataCorreto.setIssueDate(headerDataCorretoUpdate.getIssueDate());
+            headerDataCorreto.setIssuingOffice(headerDataCorretoUpdate.getIssuingOffice());
+            headerDataCorreto.setOrigin(headerDataCorretoUpdate.getOrigin());
+            headerDataCorreto.setPortOfLoading(headerDataCorretoUpdate.getPortOfLoading());
+            headerDataCorreto.setPortOfDischarge(headerDataCorretoUpdate.getPortOfDischarge());
+            headerDataCorreto.setShipper(headerDataCorretoUpdate.getShipper());
+            headerDataCorreto.setConsignee(headerDataCorretoUpdate.getConsignee());
+            headerDataCorreto.setNotify1(headerDataCorretoUpdate.getNotify1());
+            headerDataCorreto.setMultiModal(headerDataCorretoUpdate.getMultiModal());
+            headerDataCorreto.setBookingDate(headerDataCorretoUpdate.getBookingDate());
+            headerDataCorreto.setShortBlNr(headerDataCorretoUpdate.getShortBlNr());
+            headerDataCorreto.setVessel(headerDataCorretoUpdate.getVessel());
+            headerDataCorreto.setVoyage(headerDataCorretoUpdate.getVoyage());
+            headerDataCorreto.setDirection(headerDataCorretoUpdate.getDirection());
+            headerDataCorreto.setVersion(headerDataCorretoUpdate.getVersion());
+            headerDataCorreto.setCorrectionCode(headerDataCorreto.getCorrectionCode());
+            headerDataCorreto.setCreationTimeStamp(headerDataCorretoUpdate.getCreationTimeStamp());
+            headerDataCorreto.setLastUnloadDate(headerDataCorretoUpdate.getLastUnloadDate());
+            headerDataCorreto.setFinalManifestDate(headerDataCorretoUpdate.getFinalManifestDate());
+            headerDataCorreto.setIssuingOfficePlace(headerDataCorretoUpdate.getIssuingOfficePlace());
+            headerDataCorreto.setIssuingOfficeHsdg(headerDataCorreto.getIssuingOfficeHsdg());
+            headerDataCorreto.setReleasedAt(headerDataCorretoUpdate.getReleasedAt());
+            headerDataCorreto.setReleasedAtPlace(headerDataCorretoUpdate.getReleasedAtPlace());
+            headerDataCorreto.setReleasedHsdg(headerDataCorretoUpdate.getReleasedHsdg());
+            headerDataCorreto.setService(headerDataCorretoUpdate.getService());
+            headerDataCorreto.setBookingNumber(headerDataCorretoUpdate.getBookingNumber());
+            headerDataCorreto.setUbli13(headerDataCorretoUpdate.getUbli13());
+            return this.repository.save(headerDataCorreto);
         } else {
             throw new RuntimeException("Object not found.");
         }
     }
 
     @Override
-    public HeaderData findById(Long id) {
-        Optional<HeaderData> headerDataOptional = this.repository.findById(id);
+    public HeaderDataCorreto findById(Long id) {
+        Optional<HeaderDataCorreto> headerDataOptional = this.repository.findById(id);
         if(headerDataOptional.isPresent()){
             return headerDataOptional.get();
         } else {
@@ -78,13 +78,14 @@ public class HeaderDataServiceImpl implements HeaderDataService {
     }
 
     @Override
-    public List<HeaderData> findAll() {
+    public List<HeaderDataCorreto> findAll() {
         return this.repository.findAll();
+        //return this.repository.buscarTodosPorLimit10();
     }
 
     @Override
     public void delete(Long id) {
-        Optional<HeaderData> headerDataOptional = this.repository.findById(id);
+        Optional<HeaderDataCorreto> headerDataOptional = this.repository.findById(id);
         if(headerDataOptional.isPresent()){
             this.repository.delete(headerDataOptional.get());
         } else {
@@ -93,60 +94,60 @@ public class HeaderDataServiceImpl implements HeaderDataService {
     }
 
     @Override
-    public List<HeaderData> saveAll(List<HeaderData> headerDataList) {
-        if(!headerDataList.isEmpty()){
-            List<HeaderData> dataList = this.repository.saveAll(headerDataList);
+    public List<HeaderDataCorreto> saveAll(List<HeaderDataCorreto> headerDataCorretoList) {
+        if(!headerDataCorretoList.isEmpty()){
+            List<HeaderDataCorreto> dataList = this.repository.saveAll(headerDataCorretoList);
             return dataList;
         } else {
             throw new RuntimeException("Object list is empty in method saveAll");
         }
     }
 
-    public HeaderData findByUbli(String ubli){
+    public HeaderDataCorreto findByUbli(String ubli){
         if(!ubli.isEmpty()){
-            HeaderData headerData = this.repository.findByUbli(ubli);
-            return headerData;
+            HeaderDataCorreto headerDataCorreto = this.repository.findByUbli(ubli);
+            return headerDataCorreto;
         } else {
             throw new RuntimeException("Object is empty in method findByUbli");
         }
     }
 
-    public static HeaderData fromStringHeaderData(String line) {
-        HeaderData headerData = new HeaderData();
+    public static HeaderDataCorreto fromStringHeaderData(String line) {
+        HeaderDataCorreto headerDataCorreto = new HeaderDataCorreto();
         String[] parts = line.split("\\|");
 
-        headerData.setUbli(parts[0]);
-        headerData.setScacCode(parts[1]);
-        headerData.setCreationDate(parts[2]);
-        headerData.setSailingDate(parts[3]);
-        headerData.setIssueDate(parts[4]);
-        headerData.setIssuingOffice(parts[5]);
-        headerData.setOrigin(parts[6]);
-        headerData.setPortOfLoading(parts[7]);
-        headerData.setPortOfDischarge(parts[8]);
-        headerData.setShipper(parts[9]);
-        headerData.setConsignee(parts[10]);
-        headerData.setNotify1(parts[11]);
-        headerData.setMultiModal(parts[12]);
-        headerData.setBookingDate(parts[13]);
-        headerData.setShortBlNr(parts[14]);
-        headerData.setVessel(parts[15]);
-        headerData.setVoyage(parts[16]);
-        headerData.setDirection(parts[17]);
-        headerData.setVersion(parts[18]);
-        headerData.setCorrectionCode(parts[19]);
-        headerData.setCreationTimeStamp(parts[20]);
-        headerData.setLastUnloadDate(!parts[21].isEmpty() ? parts[21] : null);
-        headerData.setFinalManifestDate(!parts[21].isEmpty() ? parts[22] : null);
-        headerData.setIssuingOfficePlace(parts[23]);
-        headerData.setIssuingOfficeHsdg(parts[24]);
-        headerData.setReleasedAt(parts[25]);
-        headerData.setReleasedAtPlace(parts[26]);
-        headerData.setReleasedHsdg(parts[27]);
-        headerData.setService(parts[28]);
-        headerData.setBookingNumber(parts[29]);
-        headerData.setUbli13(parts[30]);
-        return headerData;
+        headerDataCorreto.setUbli(parts[0]);
+        headerDataCorreto.setScacCode(parts[1]);
+        headerDataCorreto.setCreationDate(parts[2]);
+        headerDataCorreto.setSailingDate(parts[3]);
+        headerDataCorreto.setIssueDate(parts[4]);
+        headerDataCorreto.setIssuingOffice(parts[5]);
+        headerDataCorreto.setOrigin(parts[6]);
+        headerDataCorreto.setPortOfLoading(parts[7]);
+        headerDataCorreto.setPortOfDischarge(parts[8]);
+        headerDataCorreto.setShipper(parts[9]);
+        headerDataCorreto.setConsignee(parts[10]);
+        headerDataCorreto.setNotify1(parts[11]);
+        headerDataCorreto.setMultiModal(parts[12]);
+        headerDataCorreto.setBookingDate(parts[13]);
+        headerDataCorreto.setShortBlNr(parts[14]);
+        headerDataCorreto.setVessel(parts[15]);
+        headerDataCorreto.setVoyage(parts[16]);
+        headerDataCorreto.setDirection(parts[17]);
+        headerDataCorreto.setVersion(parts[18]);
+        headerDataCorreto.setCorrectionCode(parts[19]);
+        headerDataCorreto.setCreationTimeStamp(parts[20]);
+        headerDataCorreto.setLastUnloadDate(!parts[21].isEmpty() ? parts[21] : null);
+        headerDataCorreto.setFinalManifestDate(!parts[21].isEmpty() ? parts[22] : null);
+        headerDataCorreto.setIssuingOfficePlace(parts[23]);
+        headerDataCorreto.setIssuingOfficeHsdg(parts[24]);
+        headerDataCorreto.setReleasedAt(parts[25]);
+        headerDataCorreto.setReleasedAtPlace(parts[26]);
+        headerDataCorreto.setReleasedHsdg(parts[27]);
+        headerDataCorreto.setService(parts[28]);
+        headerDataCorreto.setBookingNumber(parts[29]);
+        headerDataCorreto.setUbli13(parts[30]);
+        return headerDataCorreto;
     }
 
 }

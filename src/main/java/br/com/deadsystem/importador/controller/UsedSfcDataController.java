@@ -1,8 +1,6 @@
 package br.com.deadsystem.importador.controller;
 
-import br.com.deadsystem.importador.model.ItemTextData;
-import br.com.deadsystem.importador.model.UsedSfc;
-import br.com.deadsystem.importador.service.ItemTextDataServiceImpl;
+import br.com.deadsystem.importador.model.UsedSfcCorreto;
 import br.com.deadsystem.importador.service.UsedSfcServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +26,7 @@ public class UsedSfcDataController {
 
     @PostMapping("/data")
     public ResponseEntity<?> importUsedSfc(@RequestParam("file") MultipartFile file) {
-        List<UsedSfc> itemDataList = new ArrayList<>();
+        List<UsedSfcCorreto> itemDataList = new ArrayList<>();
 
         if (file.isEmpty()) {
             return new ResponseEntity<>("Por favor, envie um arquivo.", HttpStatus.BAD_REQUEST);
@@ -41,14 +39,14 @@ public class UsedSfcDataController {
                     isFirstLine = false;
                     continue; // Pula a primeira linha (cabeçalho)
                 }
-                UsedSfc usedSfc = this.usedSfcService.fromStringUsedSfc(line);
-                itemDataList.add(usedSfc);
+                UsedSfcCorreto usedSfcCorreto = this.usedSfcService.fromStringUsedSfc(line);
+                itemDataList.add(usedSfcCorreto);
             }
         } catch (IOException e) {
             e.printStackTrace();
             return new ResponseEntity<>("Falha ao importar os dados de remessa.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        List<UsedSfc> dataList = this.usedSfcService.saveAll(itemDataList);
+        List<UsedSfcCorreto> dataList = this.usedSfcService.saveAll(itemDataList);
         return ResponseEntity.ok(dataList);
     }
 

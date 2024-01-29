@@ -1,11 +1,7 @@
 package br.com.deadsystem.importador.service;
 
-import br.com.deadsystem.importador.model.Charge;
 import br.com.deadsystem.importador.model.ContainerTypeModel;
-import br.com.deadsystem.importador.model.HeaderData;
-import br.com.deadsystem.importador.model.UsedSfc;
 import br.com.deadsystem.importador.repository.ContainerTypeRepository;
-import br.com.deadsystem.importador.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

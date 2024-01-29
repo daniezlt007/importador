@@ -1,17 +1,17 @@
 package br.com.deadsystem.importador.service;
 
-import br.com.deadsystem.importador.model.ItemData;
+import br.com.deadsystem.importador.model.ItemDataCorreto;
 
 import java.util.List;
 
 public interface ItemDataService {
 
-    public ItemData save(ItemData itemData);
-    public ItemData edit(ItemData itemData);
+    public ItemDataCorreto save(ItemDataCorreto itemDataCorreto);
+    public ItemDataCorreto edit(ItemDataCorreto itemDataCorreto);
     public void delete(Long itemData);
-    public ItemData findById(Long id);
-    public List<ItemData> findAll();
+    public ItemDataCorreto findById(Long id);
+    public List<ItemDataCorreto> findAll();
 
-    public List<ItemData> saveAll(List<ItemData> itemDataList);
+    public List<ItemDataCorreto> saveAll(List<ItemDataCorreto> itemDataCorretoList);
 
 }

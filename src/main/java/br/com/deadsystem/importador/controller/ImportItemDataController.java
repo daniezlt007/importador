@@ -1,6 +1,6 @@
 package br.com.deadsystem.importador.controller;
 
-import br.com.deadsystem.importador.model.ItemData;
+import br.com.deadsystem.importador.model.ItemDataCorreto;
 import br.com.deadsystem.importador.service.ItemDataServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +26,7 @@ public class ImportItemDataController {
 
     @PostMapping("/data")
     public ResponseEntity<?> importItemData(@RequestParam("file") MultipartFile file) {
-        List<ItemData> itemDataList = new ArrayList<>();
+        List<ItemDataCorreto> itemDataCorretoList = new ArrayList<>();
 
         if (file.isEmpty()) {
             return new ResponseEntity<>("Por favor, envie um arquivo.", HttpStatus.BAD_REQUEST);
@@ -39,15 +39,15 @@ public class ImportItemDataController {
                     isFirstLine = false;
                     continue; // Pula a primeira linha (cabeçalho)
                 }
-                ItemData headerData = this.itemDataService.fromStringItemData(line);
-                itemDataList.add(headerData);
+                ItemDataCorreto headerData = this.itemDataService.fromStringItemData(line);
+                itemDataCorretoList.add(headerData);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
             return new ResponseEntity<>("Falha ao importar os dados de remessa.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        List<ItemData> dataList = this.itemDataService.saveAll(itemDataList);
+        List<ItemDataCorreto> dataList = this.itemDataService.saveAll(itemDataCorretoList);
         return ResponseEntity.ok(dataList);
 
     }

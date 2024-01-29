@@ -1,17 +1,29 @@
 package br.com.deadsystem.importador.service;
 
 import br.com.deadsystem.importador.model.Charge;
-import br.com.deadsystem.importador.model.ItemTextData;
 import br.com.deadsystem.importador.repository.ChargeRepository;
-import br.com.deadsystem.importador.util.Util;
+import com.opencsv.CSVParserBuilder;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+import com.opencsv.exceptions.CsvValidationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ChargeServiceImpl implements ChargeService{
+
+    private static final Logger logger = LoggerFactory.getLogger(Charge.class);
 
     @Autowired
     private ChargeRepository chargeRepository;
@@ -70,7 +82,7 @@ public class ChargeServiceImpl implements ChargeService{
         return (index >= 0 && index < array.length && !array[index].isEmpty()) ? array[index] : null;
     }
 
-    public static Charge fromStringChargeData(String line) {
+    /*public static Charge fromStringChargeData(String line) {
         Charge itemData = new Charge();
         String[] parts = line.split("\\|");
 
@@ -91,11 +103,13 @@ public class ChargeServiceImpl implements ChargeService{
                 // Lidar com a exceção de conversão de string para inteiro, se necessário
             }
         }
-
+        itemData.setUbli(getValue(parts, 0));
+        itemData.setItemNr(getValue(parts, 1));
+        itemData.setItemOrder(getValue(parts, 2));
         itemData.setChargeCode(getValue(parts, 3));
         itemData.setChargeNameShort(getValue(parts, 4));
         itemData.setChargePayMode(getValue(parts, 5));
-        itemData.setInvoiceDate(getValue(parts, 6) != null ? Util.convertDate(getValue(parts, 6)) : null);
+        itemData.setInvoiceDate(getValue(parts, 6) != null ? getValue(parts, 6) : null);
         itemData.setInvoiceNo(getValue(parts, 7));
         itemData.setCreditDate(getValue(parts, 8) != null && getValue(parts, 8).length() > 1 ? Util.convertDate(getValue(parts, 8)) : null);
         itemData.setCreditNo(getValue(parts, 9));
@@ -108,10 +122,6 @@ public class ChargeServiceImpl implements ChargeService{
         itemData.setCalculationFactor(getValue(parts, 16) != null ? Double.parseDouble(getValue(parts, 16).replace(",", ".")) : 0);
         itemData.setCalculationBaseRule(getValue(parts, 17));
         itemData.setCalculationBaseUnit(getValue(parts, 18));
-
-        // Continue para os demais campos
-        // Certifique-se de adicionar validações para verificar se o índice existe e se não está vazio
-
         itemData.setAmountRdNet(getValue(parts, 19) != null ? Double.parseDouble(getValue(parts, 19).replace(",",".")) : null);
         itemData.setAmountRdInclVat(getValue(parts, 20) != null ? Double.parseDouble(getValue(parts, 20).replace(",",".")) : null);
         itemData.setAmountEur(getValue(parts, 21) != null ? Double.parseDouble(getValue(parts, 21).replace(",",".")) : null);
@@ -129,7 +139,71 @@ public class ChargeServiceImpl implements ChargeService{
         itemData.setVersion(getValue(parts, 33) != null ? Integer.parseInt(getValue(parts, 33)) : null);
 
         return itemData;
+    }*/
+    public List<Charge> fromStringChargeDataopenCV(MultipartFile file) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
+            // Lê todas as linhas do arquivo e as junta em uma única string
+            String fileContent = reader.lines().collect(Collectors.joining(System.lineSeparator()));
+
+            // Usa CSVReaderBuilder com um CSVParser personalizado para definir o delimitador
+            try (CSVReader csvReader = new CSVReaderBuilder(new StringReader(fileContent))
+                    .withCSVParser(new CSVParserBuilder().withSeparator('|').build())
+                    .build()) {
+
+                String[] nextLine;
+                csvReader.readNext(); // Se o arquivo CSV contiver cabeçalhos, pule a primeira linha
+                Charge charge;
+                List<Charge> chargeList = new ArrayList<>();
+                while ((nextLine = csvReader.readNext()) != null) {
+                    charge = new Charge();
+                    charge.setUbli(nextLine[0]);
+                    charge.setItemNr(nextLine[1]);
+                    charge.setItemOrder(nextLine[2]);
+                    charge.setChargeCode(nextLine[3]);
+                    charge.setChargeNameShort(nextLine[4]);
+                    charge.setChargePayMode(nextLine[5]);
+                    charge.setInvoiceDate(nextLine[6]);
+                    charge.setInvoiceNo(nextLine[7]);
+                    charge.setCreditDate(nextLine[8]);
+                    charge.setCreditNo(nextLine[9]);
+                    charge.setAccountingCompany(nextLine[10]);
+                    charge.setAgencyCode(nextLine[11]);
+                    charge.setCustomer(nextLine[12]);
+                    charge.setPlacePayCode(nextLine[13]);
+                    charge.setYmcMain(nextLine[14]);
+                    charge.setCalculationRate(nextLine[15]);
+                    charge.setCalculationFactor(nextLine[16]);
+                    charge.setCalculationBaseRule(nextLine[17]);
+                    charge.setCalculationBaseUnit(nextLine[18]);
+                    charge.setAmountRdNet(nextLine[19]);
+                    charge.setAmountRdInclVat(nextLine[20]);
+                    charge.setAmountEur(nextLine[21]);
+                    charge.setAmountAcc(nextLine[22]);
+                    charge.setAmountTrf(nextLine[23]);
+                    charge.setAmountInv(nextLine[24]);
+                    charge.setCurrencyRd(nextLine[25]);
+                    charge.setExchangeRateRdInv(nextLine[26]);
+                    charge.setExchangeRateRdTrf(nextLine[27]);
+                    charge.setExchangeRateRdAcc(nextLine[28]);
+                    charge.setBoletoNo(nextLine[29]);
+                    charge.setCreationTimestamp(nextLine[30]);
+                    charge.setPlacePayUnlocode(nextLine[31]);
+                    charge.setUbli13(nextLine[32]);
+                    charge.setVersion(nextLine[33]);
+                    chargeList.add(charge);
+                }
+                List<Charge> headerDataTextListSave = this.chargeRepository.saveAll(chargeList);
+                return headerDataTextListSave;
+            } catch (CsvValidationException e) {
+                logger.error("Erro durante a validação CSV", e);
+                throw new RuntimeException(e);
+            }
+        } catch (Exception e) {
+            logger.error("Erro ao ler o arquivo CSV", e);
+            throw new RuntimeException(e);
+        }
     }
+
 
 
     /*public static Charge fromStringChargeData(String line){

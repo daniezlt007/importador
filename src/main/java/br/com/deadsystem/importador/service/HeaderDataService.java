@@ -1,17 +1,17 @@
 package br.com.deadsystem.importador.service;
 
-import br.com.deadsystem.importador.model.HeaderData;
+import br.com.deadsystem.importador.model.HeaderDataCorreto;
 
 import java.util.List;
 
 public interface HeaderDataService {
 
-    public HeaderData save(HeaderData headerData);
-    public HeaderData update(HeaderData headerData);
-    public HeaderData findById(Long id);
-    public List<HeaderData> findAll();
+    public HeaderDataCorreto save(HeaderDataCorreto headerDataCorreto);
+    public HeaderDataCorreto update(HeaderDataCorreto headerDataCorreto);
+    public HeaderDataCorreto findById(Long id);
+    public List<HeaderDataCorreto> findAll();
     public void delete(Long id);
 
-    public List<HeaderData> saveAll(List<HeaderData> headerDataList);
+    public List<HeaderDataCorreto> saveAll(List<HeaderDataCorreto> headerDataCorretoList);
 
 }

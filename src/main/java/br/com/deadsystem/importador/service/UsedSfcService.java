@@ -1,17 +1,17 @@
 package br.com.deadsystem.importador.service;
 
-import br.com.deadsystem.importador.model.Charge;
-import br.com.deadsystem.importador.model.UsedSfc;
+import br.com.deadsystem.importador.model.UsedSfcCorreto;
 
 import java.util.List;
 
 public interface UsedSfcService {
 
-    public UsedSfc save(UsedSfc usedSfc);
-    public UsedSfc edit(UsedSfc usedSfc);
+    public UsedSfcCorreto save(UsedSfcCorreto usedSfcCorreto);
+    public UsedSfcCorreto edit(UsedSfcCorreto usedSfcCorreto);
     public void delete(Long id);
-    public UsedSfc findById(Long id);
-    public List<UsedSfc> findAll();
-    public List<UsedSfc> saveAll(List<UsedSfc> itemDataList);
+    public UsedSfcCorreto findById(Long id);
+    public List<UsedSfcCorreto> findAll();
+    public List<UsedSfcCorreto> saveAll(List<UsedSfcCorreto> itemDataList);
+    public UsedSfcCorreto findBySfcIdNo(String id);
 
 }

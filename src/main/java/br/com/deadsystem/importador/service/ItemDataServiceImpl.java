@@ -1,6 +1,6 @@
 package br.com.deadsystem.importador.service;
 
-import br.com.deadsystem.importador.model.ItemData;
+import br.com.deadsystem.importador.model.ItemDataCorreto;
 import br.com.deadsystem.importador.repository.ItemDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +15,9 @@ public class ItemDataServiceImpl implements ItemDataService {
     private ItemDataRepository itemDataRepository;
 
     @Override
-    public ItemData save(ItemData itemData) {
-        if(itemData != null){
-            ItemData save = this.itemDataRepository.save(itemData);
+    public ItemDataCorreto save(ItemDataCorreto itemDataCorreto) {
+        if(itemDataCorreto != null){
+            ItemDataCorreto save = this.itemDataRepository.save(itemDataCorreto);
             return save;
         } else {
             throw new RuntimeException("Object save is null!");
@@ -25,27 +25,27 @@ public class ItemDataServiceImpl implements ItemDataService {
     }
 
     @Override
-    public ItemData edit(ItemData itemDataUpdate) {
-        Optional<ItemData> itemDataOptional = this.itemDataRepository.findById(itemDataUpdate.getId());
+    public ItemDataCorreto edit(ItemDataCorreto itemDataCorretoUpdate) {
+        Optional<ItemDataCorreto> itemDataOptional = this.itemDataRepository.findById(itemDataCorretoUpdate.getId());
         if(itemDataOptional.isPresent()){
-            ItemData itemData = itemDataOptional.get();
-            itemData.setUbli(itemDataUpdate.getUbli());
-            itemData.setScacCode(itemDataUpdate.getScacCode());
-            itemData.setContainerNr(itemDataUpdate.getContainerNr());
-            itemData.setItemNr(itemDataUpdate.getItemNr());
-            itemData.setShipmentType1(itemDataUpdate.getShipmentType1());
-            itemData.setContainerType(itemDataUpdate.getContainerType());
-            itemData.setGrossWeight(itemDataUpdate.getGrossWeight());
-            itemData.setGrossWeightUnit(itemDataUpdate.getGrossWeightUnit());
-            itemData.setItemBookNo(itemDataUpdate.getItemBookNo());
-            itemData.setVolume(itemDataUpdate.getVolume());
-            itemData.setVolumeUnit(itemDataUpdate.getVolumeUnit());
-            itemData.setHsCode(itemDataUpdate.getHsCode());
-            itemData.setPackageCount(itemDataUpdate.getPackageCount());
-            itemData.setPackageType(itemDataUpdate.getPackageType());
-            itemData.setUbli13(itemDataUpdate.getUbli13());
-            itemData.setVolume(itemDataUpdate.getVolume());
-            return this.itemDataRepository.save(itemData);
+            ItemDataCorreto itemDataCorreto = itemDataOptional.get();
+            itemDataCorreto.setUbli(itemDataCorretoUpdate.getUbli());
+            itemDataCorreto.setScacCode(itemDataCorretoUpdate.getScacCode());
+            itemDataCorreto.setContainerNr(itemDataCorretoUpdate.getContainerNr());
+            itemDataCorreto.setItemNr(itemDataCorretoUpdate.getItemNr());
+            itemDataCorreto.setShipmentType1(itemDataCorretoUpdate.getShipmentType1());
+            itemDataCorreto.setContainerType(itemDataCorretoUpdate.getContainerType());
+            itemDataCorreto.setGrossWeight(itemDataCorretoUpdate.getGrossWeight());
+            itemDataCorreto.setGrossWeightUnit(itemDataCorretoUpdate.getGrossWeightUnit());
+            itemDataCorreto.setItemBookNo(itemDataCorretoUpdate.getItemBookNo());
+            itemDataCorreto.setVolume(itemDataCorretoUpdate.getVolume());
+            itemDataCorreto.setVolumeUnit(itemDataCorretoUpdate.getVolumeUnit());
+            itemDataCorreto.setHsCode(itemDataCorretoUpdate.getHsCode());
+            itemDataCorreto.setPackageCount(itemDataCorretoUpdate.getPackageCount());
+            itemDataCorreto.setPackageType(itemDataCorretoUpdate.getPackageType());
+            itemDataCorreto.setUbli13(itemDataCorretoUpdate.getUbli13());
+            itemDataCorreto.setVolume(itemDataCorretoUpdate.getVolume());
+            return this.itemDataRepository.save(itemDataCorreto);
         } else {
             throw new RuntimeException("Object not found.");
         }
@@ -53,7 +53,7 @@ public class ItemDataServiceImpl implements ItemDataService {
 
     @Override
     public void delete(Long id) {
-        Optional<ItemData> itemDataOptional = this.itemDataRepository.findById(id);
+        Optional<ItemDataCorreto> itemDataOptional = this.itemDataRepository.findById(id);
         if(itemDataOptional.isPresent()){
             this.itemDataRepository.delete(itemDataOptional.get());
         } else {
@@ -62,8 +62,8 @@ public class ItemDataServiceImpl implements ItemDataService {
     }
 
     @Override
-    public ItemData findById(Long id) {
-        Optional<ItemData> itemDataOptional = this.itemDataRepository.findById(id);
+    public ItemDataCorreto findById(Long id) {
+        Optional<ItemDataCorreto> itemDataOptional = this.itemDataRepository.findById(id);
         if(itemDataOptional.isPresent()){
             return itemDataOptional.get();
         } else {
@@ -72,43 +72,43 @@ public class ItemDataServiceImpl implements ItemDataService {
     }
 
     @Override
-    public List<ItemData> findAll() {
+    public List<ItemDataCorreto> findAll() {
         return this.itemDataRepository.findAll();
     }
 
     @Override
-    public List<ItemData> saveAll(List<ItemData> itemDataList) {
-        if(!itemDataList.isEmpty()){
-            List<ItemData> dataList = this.itemDataRepository.saveAll(itemDataList);
+    public List<ItemDataCorreto> saveAll(List<ItemDataCorreto> itemDataCorretoList) {
+        if(!itemDataCorretoList.isEmpty()){
+            List<ItemDataCorreto> dataList = this.itemDataRepository.saveAll(itemDataCorretoList);
             return dataList;
         } else {
             throw new RuntimeException("Object list is empty in method saveAll");
         }
     }
 
-    public static ItemData fromStringItemData(String line){
-        ItemData itemData = new ItemData();
+    public static ItemDataCorreto fromStringItemData(String line){
+        ItemDataCorreto itemDataCorreto = new ItemDataCorreto();
         String[] parts = line.split("\\|");
-        itemData.setUbli(parts[0]);
-        itemData.setScacCode(parts[1]);
-        itemData.setContainerNr(parts[2]);
-        itemData.setItemNr(parts[3] != null ? Integer.parseInt(parts[3]) : 0);
-        itemData.setShipmentType1(parts[4]);
-        itemData.setContainerType(parts[5]);
-        itemData.setGrossWeight(parts[6] != null ? Double.parseDouble(parts[6].replace(",",".")) : 0);
-        itemData.setGrossWeightUnit(parts[7]);
-        itemData.setItemBookNo(parts[8]);
-        itemData.setVolume(parts[9] != null ? Double.parseDouble(parts[9].replace(",",".")) : 0);
-        itemData.setVolumeUnit(parts[10]);
-        itemData.setHsCode(parts[11]);
-        itemData.setPackageCount(!parts[12].isEmpty() ? Integer.parseInt(parts[12]) : 0);
-        itemData.setPackageType(parts[13]);
-        itemData.setUbli13(parts[14]);
-        itemData.setVersion(parts[15]);
-        return itemData;
+        itemDataCorreto.setUbli(parts[0]);
+        itemDataCorreto.setScacCode(parts[1]);
+        itemDataCorreto.setContainerNr(parts[2]);
+        itemDataCorreto.setItemNr(parts[3] != null ? Integer.parseInt(parts[3]) : 0);
+        itemDataCorreto.setShipmentType1(parts[4]);
+        itemDataCorreto.setContainerType(parts[5]);
+        itemDataCorreto.setGrossWeight(parts[6] != null ? Double.parseDouble(parts[6].replace(",",".")) : 0);
+        itemDataCorreto.setGrossWeightUnit(parts[7]);
+        itemDataCorreto.setItemBookNo(parts[8]);
+        itemDataCorreto.setVolume(parts[9] != null ? Double.parseDouble(parts[9].replace(",",".")) : 0);
+        itemDataCorreto.setVolumeUnit(parts[10]);
+        itemDataCorreto.setHsCode(parts[11]);
+        itemDataCorreto.setPackageCount(!parts[12].isEmpty() ? Integer.parseInt(parts[12]) : 0);
+        itemDataCorreto.setPackageType(parts[13]);
+        itemDataCorreto.setUbli13(parts[14]);
+        itemDataCorreto.setVersion(parts[15]);
+        return itemDataCorreto;
     }
 
-    public List<ItemData> findAllByUbli(String ubli){
+    public List<ItemDataCorreto> findAllByUbli(String ubli){
         return this.itemDataRepository.findAllByUbli(ubli);
     }
 

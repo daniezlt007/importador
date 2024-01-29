@@ -1,8 +1,6 @@
 package br.com.deadsystem.importador.service;
 
-import br.com.deadsystem.importador.model.HeaderData;
-import br.com.deadsystem.importador.model.ItemData;
-import br.com.deadsystem.importador.model.ItemTextData;
+import br.com.deadsystem.importador.model.ItemTextDataCorreto;
 import br.com.deadsystem.importador.repository.ItemTextDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +16,9 @@ public class ItemTextDataServiceImpl implements ItemTextDataService {
 
 
     @Override
-    public ItemTextData save(ItemTextData itemTextData) {
-        if(itemTextData != null){
-            ItemTextData save = this.itemTextDataRepository.save(itemTextData);
+    public ItemTextDataCorreto save(ItemTextDataCorreto itemTextDataCorreto) {
+        if(itemTextDataCorreto != null){
+            ItemTextDataCorreto save = this.itemTextDataRepository.save(itemTextDataCorreto);
             return save;
         }  else {
             throw new RuntimeException("Object not found.");
@@ -28,17 +26,17 @@ public class ItemTextDataServiceImpl implements ItemTextDataService {
     }
 
     @Override
-    public ItemTextData edit(ItemTextData itemTextDataUpdate) {
-        Optional<ItemTextData> itemTextDataOptional = this.itemTextDataRepository.findById(itemTextDataUpdate.getId());
+    public ItemTextDataCorreto edit(ItemTextDataCorreto itemTextDataCorretoUpdate) {
+        Optional<ItemTextDataCorreto> itemTextDataOptional = this.itemTextDataRepository.findById(itemTextDataCorretoUpdate.getId());
         if(itemTextDataOptional.isPresent()){
-            ItemTextData itemTextData = itemTextDataOptional.get();
-            itemTextData.setId(itemTextData.getId());
-            itemTextData.setUbli(itemTextDataUpdate.getUbli());
-            itemTextData.setScacCode(itemTextDataUpdate.getScacCode());
-            itemTextData.setItemNr(itemTextDataUpdate.getItemNr());
-            itemTextData.setDesctiptionOfGoods(itemTextDataUpdate.getDesctiptionOfGoods());
-            itemTextData.setNcmNumbers(itemTextDataUpdate.getNcmNumbers());
-            return this.itemTextDataRepository.save(itemTextData);
+            ItemTextDataCorreto itemTextDataCorreto = itemTextDataOptional.get();
+            itemTextDataCorreto.setId(itemTextDataCorreto.getId());
+            itemTextDataCorreto.setUbli(itemTextDataCorretoUpdate.getUbli());
+            itemTextDataCorreto.setScacCode(itemTextDataCorretoUpdate.getScacCode());
+            itemTextDataCorreto.setItemNr(itemTextDataCorretoUpdate.getItemNr());
+            itemTextDataCorreto.setDescriptionOfGoods(itemTextDataCorretoUpdate.getDescriptionOfGoods());
+            itemTextDataCorreto.setNcmNumbers(itemTextDataCorretoUpdate.getNcmNumbers());
+            return this.itemTextDataRepository.save(itemTextDataCorreto);
         } else {
             throw new RuntimeException("Object not found.");
         }
@@ -46,7 +44,7 @@ public class ItemTextDataServiceImpl implements ItemTextDataService {
 
     @Override
     public void delete(Long id) {
-        Optional<ItemTextData> itemTextDataOptional = this.itemTextDataRepository.findById(id);
+        Optional<ItemTextDataCorreto> itemTextDataOptional = this.itemTextDataRepository.findById(id);
         if(itemTextDataOptional.isPresent()){
             this.itemTextDataRepository.delete(itemTextDataOptional.get());
         } else {
@@ -55,8 +53,8 @@ public class ItemTextDataServiceImpl implements ItemTextDataService {
     }
 
     @Override
-    public ItemTextData findById(Long id) {
-        Optional<ItemTextData> itemTextDataOptional = this.itemTextDataRepository.findById(id);
+    public ItemTextDataCorreto findById(Long id) {
+        Optional<ItemTextDataCorreto> itemTextDataOptional = this.itemTextDataRepository.findById(id);
         if(itemTextDataOptional.isPresent()){
             return itemTextDataOptional.get();
         } else {
@@ -65,29 +63,39 @@ public class ItemTextDataServiceImpl implements ItemTextDataService {
     }
 
     @Override
-    public List<ItemTextData> findAll() {
+    public List<ItemTextDataCorreto> findAll() {
         return this.itemTextDataRepository.findAll();
     }
 
     @Override
-    public List<ItemTextData> saveAll(List<ItemTextData> itemTextDataList) {
-        if(!itemTextDataList.isEmpty()){
-            List<ItemTextData> dataList = this.itemTextDataRepository.saveAll(itemTextDataList);
+    public List<ItemTextDataCorreto> saveAll(List<ItemTextDataCorreto> itemTextDataCorretoList) {
+        if(!itemTextDataCorretoList.isEmpty()){
+            List<ItemTextDataCorreto> dataList = this.itemTextDataRepository.saveAll(itemTextDataCorretoList);
             return dataList;
         } else {
             throw new RuntimeException("Object list is empty in method saveAll");
         }
     }
 
-    public static ItemTextData fromStringItemTextData(String line){
-        ItemTextData itemData = new ItemTextData();
+    public static ItemTextDataCorreto fromStringItemTextData(String line){
+        ItemTextDataCorreto itemData = new ItemTextDataCorreto();
         String[] parts = line.split("\\|");
         itemData.setUbli(parts[0]);
         itemData.setScacCode(parts[1]);
         itemData.setItemNr(parts[2]);
-        itemData.setDesctiptionOfGoods(parts[3]);
+        itemData.setDescriptionOfGoods(parts[3]);
         itemData.setNcmNumbers(parts[4]);
         return itemData;
     }
+
+    public String findByUbli(String ubli){
+        List<ItemTextDataCorreto> itemTextDataCorretoList = this.itemTextDataRepository.findByUbli(ubli);
+        String msg = "";
+        for (ItemTextDataCorreto itemTextDataCorreto : itemTextDataCorretoList){
+            msg += itemTextDataCorreto.getDescriptionOfGoods() + " ";
+        }
+        return msg;
+    }
+
 
 }

@@ -24,10 +24,10 @@ public class Charge {
     private String ubli;
 
     @Column(name = "item_nr")
-    private Integer itemNr;
+    private String itemNr;
 
     @Column(name = "item_order")
-    private Integer itemOrder;
+    private String itemOrder;
 
     @Column(name = "charge_code")
     private String chargeCode;
@@ -39,13 +39,13 @@ public class Charge {
     private String chargePayMode;
 
     @Column(name = "invoice_date")
-    private LocalDate invoiceDate;
+    private String invoiceDate;
 
     @Column(name = "invoice_no")
     private String invoiceNo;
 
     @Column(name = "credit_date")
-    private LocalDate creditDate;
+    private String creditDate;
 
     @Column(name = "credit_no")
     private String creditNo;
@@ -65,10 +65,10 @@ public class Charge {
     private String ymcMain;
 
     @Column(name = "calculation_rate")
-    private Double calculationRate;
+    private String calculationRate;
 
     @Column(name = "calculation_factor")
-    private Double calculationFactor;
+    private String calculationFactor;
 
     @Column(name = "calculation_base_rule")
     private String calculationBaseRule;
@@ -77,40 +77,40 @@ public class Charge {
     private String calculationBaseUnit;
 
     @Column(name = "amount_rd_net")
-    private Double amountRdNet;
+    private String amountRdNet;
 
     @Column(name = "amount_rd_incl_vat")
-    private Double amountRdInclVat;
+    private String amountRdInclVat;
 
     @Column(name = "amount_eur")
-    private Double amountEur;
+    private String amountEur;
 
     @Column(name = "amount_acc")
-    private Double amountAcc;
+    private String amountAcc;
 
     @Column(name = "amount_trf")
-    private Double amountTrf;
+    private String amountTrf;
 
     @Column(name = "amount_inv")
-    private Double amountInv;
+    private String amountInv;
 
     @Column(name = "currency_rd")
     private String currencyRd;
 
     @Column(name = "exchange_rate_rd_inv")
-    private Double exchangeRateRdInv;
+    private String exchangeRateRdInv;
 
     @Column(name = "exchange_rate_rd_trf")
-    private Double exchangeRateRdTrf;
+    private String exchangeRateRdTrf;
 
     @Column(name = "exchange_rate_rd_acc")
-    private Double exchangeRateRdAcc;
+    private String exchangeRateRdAcc;
 
     @Column(name = "boleto_no")
     private String boletoNo;
 
     @Column(name = "creation_timestamp")
-    private LocalDateTime creationTimestamp;
+    private String creationTimestamp;
 
     @Column(name = "place_pay_unlocode")
     private String placePayUnlocode;
@@ -118,6 +118,6 @@ public class Charge {
     @Column(name = "ubli_13")
     private String ubli13;
 
-    private Integer version;
+    private String version;
 
 }

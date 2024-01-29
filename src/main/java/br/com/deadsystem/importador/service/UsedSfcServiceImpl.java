@@ -1,10 +1,7 @@
 package br.com.deadsystem.importador.service;
 
-import br.com.deadsystem.importador.model.Charge;
-import br.com.deadsystem.importador.model.ItemData;
-import br.com.deadsystem.importador.model.UsedSfc;
+import br.com.deadsystem.importador.model.UsedSfcCorreto;
 import br.com.deadsystem.importador.repository.UsedSfcRepository;
-import br.com.deadsystem.importador.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +15,9 @@ public class UsedSfcServiceImpl implements UsedSfcService {
     private UsedSfcRepository usedSfcRepository;
 
     @Override
-    public UsedSfc save(UsedSfc usedSfc) {
-        if(usedSfc != null){
-            UsedSfc save = this.usedSfcRepository.save(usedSfc);
+    public UsedSfcCorreto save(UsedSfcCorreto usedSfcCorreto) {
+        if(usedSfcCorreto != null){
+            UsedSfcCorreto save = this.usedSfcRepository.save(usedSfcCorreto);
             return save;
         }  else {
             throw new RuntimeException("Object not found.");
@@ -28,49 +25,49 @@ public class UsedSfcServiceImpl implements UsedSfcService {
     }
 
     @Override
-    public UsedSfc edit(UsedSfc usedSfcEdit) {
-        Optional<UsedSfc> usedSfcOptional = this.usedSfcRepository.findById(usedSfcEdit.getId());
+    public UsedSfcCorreto edit(UsedSfcCorreto usedSfcCorretoEdit) {
+        Optional<UsedSfcCorreto> usedSfcOptional = this.usedSfcRepository.findById(usedSfcCorretoEdit.getId());
         if(usedSfcOptional.isPresent()){
-            UsedSfc usedSfc = usedSfcOptional.get();
-            usedSfc.setSfcIntNo(usedSfcEdit.getSfcIntNo());
-            usedSfc.setTerritoryNo(usedSfcEdit.getTerritoryNo());
-            usedSfc.setAccountCurrent(usedSfcEdit.getAccountCurrent());
-            usedSfc.setSfcName(usedSfcEdit.getSfcName());
-            usedSfc.setSfcName2(usedSfcEdit.getSfcName2());
-            usedSfc.setUpdateUserIntNo(usedSfcEdit.getUpdateUserIntNo());
-            usedSfc.setUpdateTimestamp(usedSfcEdit.getUpdateTimestamp());
-            usedSfc.setAccountType(usedSfcEdit.getAccountType());
-            usedSfc.setImExport(usedSfcEdit.getImExport());
-            usedSfc.setCifFob(usedSfcEdit.getCifFob());
-            usedSfc.setReorgYn(usedSfcEdit.getReorgYn());
-            usedSfc.setCarrierMerchant(usedSfcEdit.getCarrierMerchant());
-            usedSfc.setCaresYn(usedSfcEdit.getCaresYn());
-            usedSfc.setTopShipperYn(usedSfcEdit.getTopShipperYn());
-            usedSfc.setBranchId(usedSfcEdit.getBranchId());
-            usedSfc.setStreet(usedSfcEdit.getStreet());
-            usedSfc.setCityName(usedSfcEdit.getCityName());
-            usedSfc.setCountryNo(usedSfcEdit.getCountryNo());
-            usedSfc.setStateNo(usedSfcEdit.getStateNo());
-            usedSfc.setZipNo(usedSfcEdit.getZipNo());
-            usedSfc.setPhoneNo(usedSfcEdit.getPhoneNo());
-            usedSfc.setFaxNo(usedSfcEdit.getFaxNo());
-            usedSfc.setEmailAddress(usedSfcEdit.getEmailAddress());
-            usedSfc.setHomepageAddress(usedSfcEdit.getHomepageAddress());
-            usedSfc.setTaxNo(usedSfcEdit.getTaxNo());
-            usedSfc.setAreaRegionLbu(usedSfcEdit.getAreaRegionLbu());
-            usedSfc.setInttraCode(usedSfcEdit.getInttraCode());
-            usedSfc.setMatrix(usedSfcEdit.getMatrix());
-            usedSfc.setCurrencyNo(usedSfcEdit.getCurrencyNo());
-            usedSfc.setRemark(usedSfcEdit.getRemark());
-            usedSfc.setAccessorOffice(usedSfcEdit.getAccessorOffice());
-            usedSfc.setSiteInfo(usedSfcEdit.getSiteInfo());
-            usedSfc.setSfcTypes(usedSfcEdit.getSfcTypes());
-            usedSfc.setCityCode(usedSfcEdit.getCityCode());
-            usedSfc.setSupplement(usedSfcEdit.getSupplement());
-            usedSfc.setNeighborhood(usedSfcEdit.getNeighborhood());
-            usedSfc.setStreetNumber(usedSfcEdit.getStreetNumber());
-            usedSfc.setPoBox(usedSfcEdit.getPoBox());
-            return this.usedSfcRepository.save(usedSfc);
+            UsedSfcCorreto usedSfcCorreto = usedSfcOptional.get();
+            usedSfcCorreto.setSfcIntNo(usedSfcCorretoEdit.getSfcIntNo());
+            usedSfcCorreto.setTerritoryNo(usedSfcCorretoEdit.getTerritoryNo());
+            usedSfcCorreto.setAccountCurrent(usedSfcCorretoEdit.getAccountCurrent());
+            usedSfcCorreto.setSfcName(usedSfcCorretoEdit.getSfcName());
+            usedSfcCorreto.setSfcName2(usedSfcCorretoEdit.getSfcName2());
+            usedSfcCorreto.setUpdateUserIntNo(usedSfcCorretoEdit.getUpdateUserIntNo());
+            usedSfcCorreto.setUpdateTimestamp(usedSfcCorretoEdit.getUpdateTimestamp());
+            usedSfcCorreto.setAccountType(usedSfcCorretoEdit.getAccountType());
+            usedSfcCorreto.setImExport(usedSfcCorretoEdit.getImExport());
+            usedSfcCorreto.setCifFob(usedSfcCorretoEdit.getCifFob());
+            usedSfcCorreto.setReorgYn(usedSfcCorretoEdit.getReorgYn());
+            usedSfcCorreto.setCarrierMerchant(usedSfcCorretoEdit.getCarrierMerchant());
+            usedSfcCorreto.setCaresYn(usedSfcCorretoEdit.getCaresYn());
+            usedSfcCorreto.setTopShipperYn(usedSfcCorretoEdit.getTopShipperYn());
+            usedSfcCorreto.setBranchId(usedSfcCorretoEdit.getBranchId());
+            usedSfcCorreto.setStreet(usedSfcCorretoEdit.getStreet());
+            usedSfcCorreto.setCityName(usedSfcCorretoEdit.getCityName());
+            usedSfcCorreto.setCountryNo(usedSfcCorretoEdit.getCountryNo());
+            usedSfcCorreto.setStateNo(usedSfcCorretoEdit.getStateNo());
+            usedSfcCorreto.setZipNo(usedSfcCorretoEdit.getZipNo());
+            usedSfcCorreto.setPhoneNo(usedSfcCorretoEdit.getPhoneNo());
+            usedSfcCorreto.setFaxNo(usedSfcCorretoEdit.getFaxNo());
+            usedSfcCorreto.setEmailAddress(usedSfcCorretoEdit.getEmailAddress());
+            usedSfcCorreto.setHomepageAddress(usedSfcCorretoEdit.getHomepageAddress());
+            usedSfcCorreto.setTaxNo(usedSfcCorretoEdit.getTaxNo());
+            usedSfcCorreto.setAreaRegionLbu(usedSfcCorretoEdit.getAreaRegionLbu());
+            usedSfcCorreto.setInttraCode(usedSfcCorretoEdit.getInttraCode());
+            usedSfcCorreto.setMatrix(usedSfcCorretoEdit.getMatrix());
+            usedSfcCorreto.setCurrencyNo(usedSfcCorretoEdit.getCurrencyNo());
+            usedSfcCorreto.setRemark(usedSfcCorretoEdit.getRemark());
+            usedSfcCorreto.setAccessorOffice(usedSfcCorretoEdit.getAccessorOffice());
+            usedSfcCorreto.setSiteInfo(usedSfcCorretoEdit.getSiteInfo());
+            usedSfcCorreto.setSfcTypes(usedSfcCorretoEdit.getSfcTypes());
+            usedSfcCorreto.setCityCode(usedSfcCorretoEdit.getCityCode());
+            usedSfcCorreto.setSupplement(usedSfcCorretoEdit.getSupplement());
+            usedSfcCorreto.setNeighborhood(usedSfcCorretoEdit.getNeighborhood());
+            usedSfcCorreto.setStreetNumber(usedSfcCorretoEdit.getStreetNumber());
+            usedSfcCorreto.setPoBox(usedSfcCorretoEdit.getPoBox());
+            return this.usedSfcRepository.save(usedSfcCorreto);
         } else {
             throw new RuntimeException("Object not found.");
         }
@@ -78,7 +75,7 @@ public class UsedSfcServiceImpl implements UsedSfcService {
 
     @Override
     public void delete(Long id) {
-        Optional<UsedSfc> usedSfcOptional = this.usedSfcRepository.findById(id);
+        Optional<UsedSfcCorreto> usedSfcOptional = this.usedSfcRepository.findById(id);
         if(usedSfcOptional.isPresent()){
             this.usedSfcRepository.delete(usedSfcOptional.get());
         } else {
@@ -88,8 +85,8 @@ public class UsedSfcServiceImpl implements UsedSfcService {
     }
 
     @Override
-    public UsedSfc findById(Long id) {
-        Optional<UsedSfc> usedSfc = this.usedSfcRepository.findById(id);
+    public UsedSfcCorreto findById(Long id) {
+        Optional<UsedSfcCorreto> usedSfc = this.usedSfcRepository.findById(id);
         if(usedSfc.isPresent()){
             return usedSfc.get();
         } else {
@@ -98,22 +95,38 @@ public class UsedSfcServiceImpl implements UsedSfcService {
     }
 
     @Override
-    public List<UsedSfc> findAll() {
+    public List<UsedSfcCorreto> findAll() {
         return this.usedSfcRepository.findAll();
     }
 
     @Override
-    public List<UsedSfc> saveAll(List<UsedSfc> itemDataList) {
+    public List<UsedSfcCorreto> saveAll(List<UsedSfcCorreto> itemDataList) {
         if(!itemDataList.isEmpty()){
-            List<UsedSfc> dataList = this.usedSfcRepository.saveAll(itemDataList);
+            List<UsedSfcCorreto> dataList = this.usedSfcRepository.saveAll(itemDataList);
             return dataList;
         } else {
             throw new RuntimeException("Object list is empty in method saveAll");
         }
     }
 
-    public static UsedSfc fromStringUsedSfc(String line) {
-        UsedSfc itemData = new UsedSfc();
+    @Override
+    public UsedSfcCorreto findBySfcIdNo(String id) {
+        if(!id.isEmpty()){
+            UsedSfcCorreto sfcDataOptional = this.usedSfcRepository.findBySfcIntNo(id);
+            if(sfcDataOptional != null){
+                UsedSfcCorreto sfcData = sfcDataOptional;
+                return sfcData;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+            //throw new RuntimeException("Id is empty in method findById");
+        }
+    }
+
+    public static UsedSfcCorreto fromStringUsedSfc(String line) {
+        UsedSfcCorreto itemData = new UsedSfcCorreto();
         String[] parts = line.split("\\|");
 
         itemData.setSfcIntNo(getValue(parts, 0));
@@ -122,7 +135,7 @@ public class UsedSfcServiceImpl implements UsedSfcService {
         itemData.setSfcName(getValue(parts, 3));
         itemData.setSfcName2(getValue(parts, 4));
         itemData.setUpdateUserIntNo(getValue(parts, 5));
-        itemData.setUpdateTimestamp(Util.convertDateTime(getValue(parts, 6)));
+        itemData.setUpdateTimestamp(getValue(parts, 6));
         itemData.setAccountType(getValue(parts, 7));
         itemData.setImExport(getValue(parts, 8));
         itemData.setCifFob(getValue(parts, 9));
@@ -136,24 +149,25 @@ public class UsedSfcServiceImpl implements UsedSfcService {
         itemData.setCountryNo(getValue(parts, 17));
         itemData.setStateNo(getValue(parts, 18));
         itemData.setZipNo(getValue(parts, 19));
-        itemData.setPhoneNo(getValue(parts, 20));
-        itemData.setFaxNo(getValue(parts, 21));
-        itemData.setEmailAddress(getValue(parts, 22));
-        itemData.setHomepageAddress(getValue(parts, 23));
-        itemData.setTaxNo(getValue(parts, 24));
-        itemData.setAreaRegionLbu(getValue(parts, 25));
-        itemData.setInttraCode(getValue(parts, 26));
-        itemData.setMatrix(getValue(parts, 27));
-        itemData.setCurrencyNo(getValue(parts, 28));
-        itemData.setRemark(getValue(parts, 29));
-        itemData.setAccessorOffice(getValue(parts, 30));
-        itemData.setSiteInfo(getValue(parts, 31));
-        itemData.setSfcTypes(getValue(parts, 32));
-        itemData.setCityCode(getValue(parts, 33));
-        itemData.setSupplement(getValue(parts, 34));
-        itemData.setNeighborhood(getValue(parts, 35));
-        itemData.setStreetNumber(getValue(parts, 36));
-        itemData.setPoBox(getValue(parts, 37));
+        itemData.setPlaceIntNo(getValue(parts, 20));
+        itemData.setPhoneNo(getValue(parts, 21));
+        itemData.setFaxNo(getValue(parts, 22));
+        itemData.setEmailAddress(getValue(parts, 23));
+        itemData.setHomepageAddress(getValue(parts, 24));
+        itemData.setTaxNo(getValue(parts, 25));
+        itemData.setAreaRegionLbu(getValue(parts, 26));
+        itemData.setInttraCode(getValue(parts, 27));
+        itemData.setMatrix(getValue(parts, 28));
+        itemData.setCurrencyNo(getValue(parts, 29));
+        itemData.setRemark(getValue(parts, 30));
+        itemData.setAccessorOffice(getValue(parts, 31));
+        itemData.setSiteInfo(getValue(parts, 32));
+        itemData.setSfcTypes(getValue(parts, 33));
+        itemData.setCityCode(getValue(parts, 34));
+        itemData.setSupplement(getValue(parts, 35));
+        itemData.setNeighborhood(getValue(parts, 36));
+        itemData.setStreetNumber(getValue(parts, 37));
+        itemData.setPoBox(getValue(parts, 38));
 
         return itemData;
     }
